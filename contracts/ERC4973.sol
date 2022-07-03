@@ -1,4 +1,5 @@
-pragma solidity ^0.8.6;
+// SPDX-License-Identifier: CC0-1.0
+pragma solidity ^0.8.8;
 
 interface IERC165 {
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
@@ -68,13 +69,7 @@ abstract contract ERC4973 is ERC165, IERC721Metadata, IERC4973 {
         return _symbol;
     }
 
-    function ownerOf(uint256 tokenId)
-        public
-        view
-        virtual
-        override
-        returns (address)
-    {
+    function ownerOf(uint256 tokenId) public view virtual returns (address) {
         address owner = _owners[tokenId];
         require(owner != address(0), "ownerOf: token doesn't exist");
         return owner;
